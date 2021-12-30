@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Throw</string>
+    <string name="label_authorization">Регистрация</string>
+    <string name="text_enter">Зарегистрироваться</string>
+    <string name="hint_input_pass">Пароль</string>
+    <string name="hint_input_login">Почта</string>
+    <string name="hint_input_name">Имя</string>
+    <string name="search">Введите запрос</string>
+    <string name="search1">Поиск</string>
+    <string name="news">Новости</string>
+    <string name="s_enter">Найти</string>
+    <string name="searchc">Поиск</string>
+    <string name="textViewn2">Новости</string>
+    <string name="item_news1">Сергей Литвинов-страший</string>
+    <string name="item_news">Заслуженный тренер России, после окончания спортивной карьеры всю жизнь проработал тренером, личный тренер своего сына — Сергея Литвинова-младшего — бронзового призера чемпионата Европы по метанию молота.</string>
+    <string name="news1">Спортсменка Комплексной спортивной школы олимпийского резерва Мордовии Юлия Сидорова стала бронзовым призером финальных соревнований по легкой атлетике VIII летней Спартакиады учащихся России. </string>
+</resources>

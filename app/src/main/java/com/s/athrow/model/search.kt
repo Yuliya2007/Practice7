@@ -1,10 +1,8 @@
-package model
+package com.s.athrow.model
 
-import android.icu.text.CaseMap
 import androidx.annotation.DrawableRes
 
 data class search(
-    @DrawableRes
-    val im_modelID: Int,
-    val description: Any
+    @DrawableRes val coverResId: Int,
+    val description: String
 )

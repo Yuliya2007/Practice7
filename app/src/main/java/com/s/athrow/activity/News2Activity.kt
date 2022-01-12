@@ -1,3 +1,13 @@
+
 package com.s.athrow.activity
 
-data class News2Activity()
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.s.athrow.R
+
+class News2Activity  : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_news2)
+    }
+}

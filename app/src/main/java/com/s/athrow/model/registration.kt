@@ -1,11 +1,9 @@
-package model
+package com.s.athrow.model
 
-import android.icu.text.CaseMap
 import androidx.annotation.DrawableRes
 
 data class registration(
-    @DrawableRes
-    val im_modelID: Int,
+   @DrawableRes val coverResId: Int,
     val description: String,
     val password: Int,
     val name: String

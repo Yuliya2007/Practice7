@@ -9,9 +9,9 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+        android:theme="@style/Theme.Throw">
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.RegistrationActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.NewsActivity"/>
         <activity android:name=".activity.News1Activity"/>
         <activity android:name=".activity.News2Activity"/>

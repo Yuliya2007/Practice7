@@ -12,7 +12,7 @@ import com.s.athrow.model.Information
 typealias OnInformationClickListener = (Information)->Unit
 
 class an2Adapter(
-    private val Information : List<an2Adapter>,
+    private val Information : List<Information>,
     private val listener: OnInformationClickListener,
 ):RecyclerView.Adapter<an2Adapter.InformationVH>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformationVH {
@@ -23,13 +23,12 @@ class an2Adapter(
     override fun onBindViewHolder(holder: InformationVH, position: Int) = holder.bind(Information[position])
     override fun getItemCount(): Int = Information.size
 
-    class InformationVH(view: View, listener: OnsearchClickListener): RecyclerView.ViewHolder(view) {
+    class InformationVH(view: View, listener: OnInformationClickListener): RecyclerView.ViewHolder(view) {
 
 
-        private val nameInformation = view.findViewById<TextView>(R.id.textView)
-        private val textInformation = view.findViewById<TextView>(R.id.textView)
-        private val dateInformation = view.findViewById<TextView>(R.id.textView)
-        private val authorName = view.findViewById<TextView>(R.id.textView)
+        private val title = view.findViewById<TextView>(R.id.textView1)
+        private val description = view.findViewById<TextView>(R.id.textView)
+        private val image = view.findViewById<ImageView>(R.id.imageView5)
 
         private lateinit var Information: Information
 
@@ -39,8 +38,10 @@ class an2Adapter(
 
         fun bind(Information: Information) {
             this.Information = Information
-            nameInformation.text = Information.title
-            nameInformation.text = Information.description
+            title.text = Information.title
+            description.text = Information.description
+            image.setImageResource(Information.coverResId)
+
 
         }
     }}

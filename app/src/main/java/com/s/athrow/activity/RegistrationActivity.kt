@@ -3,13 +3,13 @@ package com.s.athrow.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.s.athrow.databinding.ActivityMainBinding
+import com.s.athrow.databinding.ActivityRegistrationBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class RegistrationActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityRegistrationBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }

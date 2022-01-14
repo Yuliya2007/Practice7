@@ -6,20 +6,21 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.s.athrow.R
-import com.s.athrow.activity.MainActivity
-import com.s.athrow.adapter.InformationAdapter
-import com.s.athrow.databinding.FragmentNewsBinding
+import com.s.athrow.adapter.SportsmenAdapter
+import com.s.athrow.databinding.FragmentSportsmensBinding
 import com.s.athrow.network.NetworkService
 import kotlinx.coroutines.*
 import kotlinx.serialization.ExperimentalSerializationApi
 
-class NewsDiskFragment : Fragment(R.layout.fragment_news)  {
-    private lateinit var binding: FragmentNewsBinding
+class SportsmensFragment : Fragment(R.layout.fragment_sportsmens) {
+    companion object {
+        fun newInstance() = SportsmensFragment()
+    }
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, _ ->
         binding.progressBar.visibility = View.GONE
-        binding.rv.layoutManager = LinearLayoutManager(context)
-        binding.rv.adapter =
-            InformationAdapter(listOf()) {}
+        binding.rv2.layoutManager = LinearLayoutManager(context)
+        binding.rv2.adapter =
+            SportsmenAdapter(listOf()) {}
         binding.swipeRefreshLayout.isRefreshing = false
         Snackbar.make(
             requireView(),
@@ -30,33 +31,28 @@ class NewsDiskFragment : Fragment(R.layout.fragment_news)  {
     private val scope =
         CoroutineScope(Dispatchers.Main + SupervisorJob() + coroutineExceptionHandler)
 
-    companion object {
-        fun newInstance() = NewsDiskFragment()
-    }
 
+    private lateinit var binding: FragmentSportsmensBinding
     @ExperimentalSerializationApi
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentNewsBinding.bind(view)
+        binding = FragmentSportsmensBinding.bind(view)
 
-        loadDisk()
+        loadSportsmen()
 
         binding.swipeRefreshLayout.setOnRefreshListener {
             binding.swipeRefreshLayout.isRefreshing = true
-            loadDisk()
+            loadSportsmen()
             binding.swipeRefreshLayout.isRefreshing = false
         }
     }
     @ExperimentalSerializationApi
-    private fun loadDisk() {
+    private fun loadSportsmen() {
         scope.launch {
-            val disk = NetworkService.loadDisk()
-            binding.rv.layoutManager = LinearLayoutManager(context)
-            binding.rv.adapter =
-                InformationAdapter(disk) { (name, image, description) ->
-                    (activity as MainActivity).navigateToFragment(
-                        DetailsFragment.newInstance(name, description, image)
-                    )
+            val sportsmen = NetworkService.loadSportsmens()
+            binding.rv2.layoutManager = LinearLayoutManager(context)
+            binding.rv2.adapter =
+                SportsmenAdapter(sportsmen) { (name, image) ->
                 }
             binding.progressBar.visibility = View.GONE
             binding.swipeRefreshLayout.isRefreshing = false

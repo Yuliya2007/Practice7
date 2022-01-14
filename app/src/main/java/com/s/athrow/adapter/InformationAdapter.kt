@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.s.athrow.R
 import com.s.athrow.model.Information
 
@@ -43,7 +44,11 @@ class InformationAdapter(
             this.Information = Information
             title.text = Information.title
             description.text = Information.description
-            image.setImageResource(Information.coverResId)
+            Glide.with(itemView.context)
+                .load(Information.image)
+                .centerCrop()
+                .placeholder(R.drawable.ic_launcher_background)
+                .into(image)
 
 
         }

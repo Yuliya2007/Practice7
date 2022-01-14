@@ -1,9 +1,10 @@
 package com.s.athrow.model
 
-import androidx.annotation.DrawableRes
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Information(
     val title: String,
-    @DrawableRes val coverResId: Int,
+    val image: String,
     val description: String
 )

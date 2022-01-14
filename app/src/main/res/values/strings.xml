@@ -17,4 +17,6 @@
     <string name="news_hammer">Метание молота</string>
     <string name="news_disk">Метание диска</string>
     <string name="news_spear">Метание копья</string>
+    <string name="sport">Спортсмены</string>
+    <string name="error">Ошибка</string>
 </resources>

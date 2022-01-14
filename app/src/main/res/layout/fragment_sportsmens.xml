@@ -13,10 +13,22 @@
         android:id="@+id/imageView2"
         android:layout_width="71dp"
         android:layout_height="62dp"
-        app:srcCompat="@mipmap/image"
+        android:src="@mipmap/image"
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="-3dp" />
-
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="@android:style/Widget.Material.ProgressBar.Large"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center"
+        android:elevation="8dp"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_in"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton2"
@@ -31,20 +43,27 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
-
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2">
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv2"
         android:layout_width="417dp"
         android:layout_height="614dp"
         android:layout_marginBottom="4dp"
         android:background="@color/teal1_200"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:itemCount="4"
-        tools:listitem="@layout/item_user"
-
- />
+        tools:listitem="@layout/item_sportsmen" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

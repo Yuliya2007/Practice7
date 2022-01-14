@@ -27,5 +27,8 @@ class NavigateFragment : Fragment(R.layout.fragment_navigate)  {
         binding.disk.setOnClickListener {
             (activity as MainActivity).navigateToFragment(NewsDiskFragment.newInstance())
         }
+        binding.sport.setOnClickListener {
+            (activity as MainActivity).navigateToFragment(SportsmensFragment.newInstance())
+        }
     }
 }

@@ -18,8 +18,9 @@ class DetailsFragment : Fragment(R.layout.fragment_details) {
 
         fun newInstance(
             name: String,
+            image: String,
             description: String,
-            image: String
+
         ): DetailsFragment {
             val args = bundleOf(
                 KEY_NAME to name,

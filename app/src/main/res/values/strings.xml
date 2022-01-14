@@ -19,4 +19,5 @@
     <string name="news_spear">Метание копья</string>
     <string name="sport">Спортсмены</string>
     <string name="error">Ошибка</string>
+    <string name="refresh">Обновить</string>
 </resources>

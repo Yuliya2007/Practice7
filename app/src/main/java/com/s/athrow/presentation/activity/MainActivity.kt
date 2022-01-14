@@ -1,4 +1,4 @@
-package com.s.athrow.activity
+package com.s.athrow.presentation.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.s.athrow.R
 import com.s.athrow.databinding.ActivityMainBinding
-import com.s.athrow.fragments.RegistrationFragment
+import com.s.athrow.presentation.fragments.RegistrationFragment
 
 class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

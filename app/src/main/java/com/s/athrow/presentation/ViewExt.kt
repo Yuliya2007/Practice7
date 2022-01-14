@@ -1,4 +1,4 @@
-package com.example.fitrm
+package com.s.athrow.presentation
 
 import android.view.View
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout

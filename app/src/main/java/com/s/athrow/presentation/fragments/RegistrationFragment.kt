@@ -1,10 +1,10 @@
-package com.s.athrow.fragments
+package com.s.athrow.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.s.athrow.R
-import com.s.athrow.activity.MainActivity
+import com.s.athrow.presentation.activity.MainActivity
 import com.s.athrow.databinding.FragmentRegistrationBinding
 
 class RegistrationFragment : Fragment(R.layout.fragment_registration) {

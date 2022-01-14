@@ -1,4 +1,4 @@
-package com.s.athrow.fragments
+package com.s.athrow.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -6,24 +6,22 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fitrm.onClickFlow
-import com.example.fitrm.onRefreshFlow
 import com.s.athrow.R
-import com.s.athrow.ScreenState
-import com.s.athrow.activity.MainActivity
-import com.s.athrow.adapter.InformationAdapter
+import com.s.athrow.presentation.ScreenState
+import com.s.athrow.presentation.activity.MainActivity
 import com.s.athrow.databinding.FragmentNewsBinding
-import com.s.athrow.model.Information
-import com.s.athrow.network.NetworkService
+import com.s.athrow.data.model.Information
+import com.s.athrow.presentation.adapter.InformationAdapter
+import com.s.athrow.presentation.viewmodel.DiskViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlinx.serialization.ExperimentalSerializationApi
 
-class NewsSpearFragment : Fragment(R.layout.fragment_news) {
+class NewsDiskFragment : Fragment(R.layout.fragment_news)  {
     private lateinit var binding: FragmentNewsBinding
-
+    private val viewModel by lazy { DiskViewModel(requireContext(), lifecycleScope) }
     companion object {
-        fun newInstance() = NewsSpearFragment()
+        fun newInstance() = NewsDiskFragment()
     }
 
     @ExperimentalCoroutinesApi
@@ -32,13 +30,12 @@ class NewsSpearFragment : Fragment(R.layout.fragment_news) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentNewsBinding.bind(view)
 
-        merge(
-            flowOf(Unit),
-            binding.swipeRefreshLayout.onRefreshFlow(),
-            binding.buttonRefresh.onClickFlow()
-        ).flatMapLatest { loadSpear() }
-            .distinctUntilChanged()
-            .onEach {
+        if (savedInstanceState == null) {
+            viewModel.loadData()
+        }
+        binding.swipeRefreshLayout.setOnRefreshListener { viewModel.loadData() }
+        binding.buttonRefresh.setOnClickListener { viewModel.loadData() }
+        viewModel.screenState.onEach {
                 when (it) {
                     is ScreenState.DataLoaded -> {
                         setLoading(false)
@@ -56,14 +53,6 @@ class NewsSpearFragment : Fragment(R.layout.fragment_news) {
                     }
                 }
             }.launchIn(lifecycleScope)
-    }
-    @ExperimentalSerializationApi
-    private fun loadSpear() = flow {
-        emit(ScreenState.Loading)
-        val spear = NetworkService.loadSpear()
-        emit(ScreenState.DataLoaded(spear))
-    }.catch {
-        emit(ScreenState.Error(getString(R.string.error)))
     }
 
     private fun setLoading(isLoading: Boolean) = with(binding) {

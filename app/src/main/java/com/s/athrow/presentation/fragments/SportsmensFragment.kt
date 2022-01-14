@@ -1,4 +1,4 @@
-package com.s.athrow.fragments
+package com.s.athrow.presentation.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -6,19 +6,18 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fitrm.onClickFlow
-import com.example.fitrm.onRefreshFlow
 import com.s.athrow.R
-import com.s.athrow.ScreenState2
-import com.s.athrow.adapter.SportsmenAdapter
+import com.s.athrow.presentation.ScreenState2
+import com.s.athrow.presentation.adapter.SportsmenAdapter
 import com.s.athrow.databinding.FragmentSportsmensBinding
-import com.s.athrow.model.Sportsmen
-import com.s.athrow.network.NetworkService
+import com.s.athrow.data.model.Sportsmen
+import com.s.athrow.presentation.viewmodel.SportsmenViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlinx.serialization.ExperimentalSerializationApi
 
 class SportsmensFragment : Fragment(R.layout.fragment_sportsmens) {
+    private val viewModel by lazy { SportsmenViewModel(requireContext(), lifecycleScope) }
     companion object {
         fun newInstance() = SportsmensFragment()
     }
@@ -29,13 +28,12 @@ class SportsmensFragment : Fragment(R.layout.fragment_sportsmens) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSportsmensBinding.bind(view)
-        merge(
-            flowOf(Unit),
-            binding.swipeRefreshLayout.onRefreshFlow(),
-            binding.buttonRefresh.onClickFlow()
-        ).flatMapLatest { loadSportsmen() }
-            .distinctUntilChanged()
-            .onEach {
+        if (savedInstanceState == null) {
+            viewModel.loadData()
+        }
+        binding.swipeRefreshLayout.setOnRefreshListener { viewModel.loadData() }
+        binding.buttonRefresh.setOnClickListener { viewModel.loadData() }
+        viewModel.screenState.onEach {
                 when (it) {
                     is ScreenState2.DataLoaded -> {
                         setLoading(false)
@@ -54,15 +52,6 @@ class SportsmensFragment : Fragment(R.layout.fragment_sportsmens) {
                 }
             }.launchIn(lifecycleScope)
     }
-    @ExperimentalSerializationApi
-    private fun loadSportsmen() = flow {
-        emit(ScreenState2.Loading)
-        val sportsmen = NetworkService.loadSportsmens()
-        emit(ScreenState2.DataLoaded(sportsmen))
-    }.catch {
-        emit(ScreenState2.Error(getString(R.string.error)))
-    }
-
     private fun setLoading(isLoading: Boolean) = with(binding) {
         progressBar.isVisible = isLoading && !rv2.isVisible
         swipeRefreshLayout.isRefreshing = isLoading && rv2.isVisible

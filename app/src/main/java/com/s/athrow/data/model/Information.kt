@@ -1,4 +1,4 @@
-package com.s.athrow.model
+package com.s.athrow.data.model
 
 import kotlinx.serialization.Serializable
 

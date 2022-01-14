@@ -1,4 +1,4 @@
-package com.s.athrow.network
+package com.s.athrow.domain.network
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import kotlinx.serialization.ExperimentalSerializationApi

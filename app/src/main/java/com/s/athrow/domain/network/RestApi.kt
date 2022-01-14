@@ -1,7 +1,7 @@
-package com.s.athrow.network
+package com.s.athrow.domain.network
 
-import com.s.athrow.model.Information
-import com.s.athrow.model.Sportsmen
+import com.s.athrow.data.model.Information
+import com.s.athrow.data.model.Sportsmen
 import retrofit2.http.GET
 
 interface RestApi {

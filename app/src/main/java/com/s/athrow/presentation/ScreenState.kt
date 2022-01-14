@@ -1,6 +1,6 @@
-package com.s.athrow
+package com.s.athrow.presentation
 
-import com.s.athrow.model.Information
+import com.s.athrow.data.model.Information
 
 sealed class ScreenState {
     data class DataLoaded(val news: List<Information>) : ScreenState()

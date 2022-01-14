@@ -1,4 +1,4 @@
-package com.s.athrow.adapter
+package com.s.athrow.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.s.athrow.R
-import com.s.athrow.model.Sportsmen
+import com.s.athrow.data.model.Sportsmen
 
 typealias OnSportsmenClickListener = (Sportsmen) -> Unit
 

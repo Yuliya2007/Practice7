@@ -3,13 +3,13 @@ package com.s.athrow.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.s.athrow.databinding.ActivityNews2Binding
+import com.s.athrow.databinding.ActivityUsersBinding
 
-class News2Activity  : AppCompatActivity() {
-    private lateinit var binding: ActivityNews2Binding
+class UsersActivity  : AppCompatActivity() {
+    private lateinit var binding: ActivityUsersBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityNews2Binding.inflate(layoutInflater)
+        binding = ActivityUsersBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 }

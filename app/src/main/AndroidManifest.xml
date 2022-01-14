@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Throw">
         <activity
+            android:name=".activity.NavigateActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.RegistrationActivity"
             android:exported="true">
             <intent-filter>
@@ -19,11 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.MainActivity"/>
-        <activity android:name=".activity.NewsActivity"/>
-        <activity android:name=".activity.News1Activity"/>
-        <activity android:name=".activity.News2Activity"/>
-
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.NewsHammerActivity" />
+        <activity android:name=".activity.UsersActivity" />
+        <activity android:name=".activity.NewsDiskActivity" />
+        <activity android:name=".activity.NewsSpearActivity" />
+        <activity android:name=".activity.DetailsActivity" />
     </application>
 
 </manifest>

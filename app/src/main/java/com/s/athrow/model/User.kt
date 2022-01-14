@@ -2,9 +2,8 @@ package com.s.athrow.model
 
 import androidx.annotation.DrawableRes
 
-data class news(
+data class User(
     val title: String,
-    @DrawableRes val coverResId: Int,
-    val description: String
+    @DrawableRes
+    val coverResId: Int
 )
-

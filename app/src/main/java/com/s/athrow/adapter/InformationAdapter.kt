@@ -9,21 +9,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.s.athrow.R
 import com.s.athrow.model.Information
 
-typealias OnInformationClickListener = (Information)->Unit
+typealias OnInformationClickListener = (Information) -> Unit
 
-class an2Adapter(
-    private val Information : List<Information>,
+class InformationAdapter(
+    private val Information: List<Information>,
     private val listener: OnInformationClickListener,
-):RecyclerView.Adapter<an2Adapter.InformationVH>() {
+) : RecyclerView.Adapter<InformationAdapter.InformationVH>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformationVH {
         val layoutInflater = LayoutInflater.from(parent.context)
         return InformationVH(layoutInflater.inflate(R.layout.item_news1, parent, false), listener)
     }
 
-    override fun onBindViewHolder(holder: InformationVH, position: Int) = holder.bind(Information[position])
+    override fun onBindViewHolder(holder: InformationVH, position: Int) =
+        holder.bind(Information[position])
+
     override fun getItemCount(): Int = Information.size
 
-    class InformationVH(view: View, listener: OnInformationClickListener): RecyclerView.ViewHolder(view) {
+    class InformationVH(view: View, listener: OnInformationClickListener) :
+        RecyclerView.ViewHolder(view) {
 
 
         private val title = view.findViewById<TextView>(R.id.textView1)
@@ -44,4 +47,5 @@ class an2Adapter(
 
 
         }
-    }}
+    }
+}

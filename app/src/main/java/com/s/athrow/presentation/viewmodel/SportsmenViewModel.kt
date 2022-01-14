@@ -2,7 +2,7 @@ package com.s.athrow.presentation.viewmodel
 
 import android.content.Context
 import com.s.athrow.R
-import com.s.athrow.domain.network.NetworkService
+import com.s.athrow.domain.network.NetworkService2
 import com.s.athrow.presentation.ScreenState2
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -26,7 +26,7 @@ class SportsmenViewModel(
         job = coroutineScope.launch {
             try {
                 _screenState.emit(ScreenState2.Loading)
-                val sport = NetworkService.loadSportsmens()
+                val sport = NetworkService2.loadSportsmens()
                 _screenState.emit(ScreenState2.DataLoaded(sport))
             } catch (ex: Throwable) {
                 _screenState.emit(ScreenState2.Error(context.resources.getString(R.string.error)))
